@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.2",
+  "packages": [
+    {
+      "name": "Spice",
+      "description": "Spice Package for Sublime Text",
+      "author": "leoheck",
+      "homepage": "https://github.com/leoheck/",
+      "last_modified": "2013-05-15 14:52:20",
+      "platforms": {
+        "*": [
+          {
+            "version": "0.1",
+            "url": "https://github.com/leoheck/sublime-spice/tags/v0.1"
+          }
+        ]
+      }
+    }
+  ]
+}
