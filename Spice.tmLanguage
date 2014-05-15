@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>sp</string>
+		<string>cdl</string>
+		<string>mdl</string>
+	</array>
+	<key>name</key>
+	<string>Spice</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>Spice Comments.</string>
+			<key>match</key>
+			<string>\*.*</string>
+			<key>name</key>
+			<string>comment.line.character.sp</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>\'</string>
+			<key>comment</key>
+			<string>Spice Comments.</string>
+			<key>end</key>
+			<string>\'</string>
+			<key>name</key>
+			<string>string.quoted.single.sp</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>\"</string>
+			<key>comment</key>
+			<string>Spice Comments.</string>
+			<key>end</key>
+			<string>\"</string>
+			<key>name</key>
+			<string>string.quoted.double.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Commands start with a dot.</string>
+			<key>match</key>
+			<string>^[ \t]*\.[^ \t]+</string>
+			<key>name</key>
+			<string>keyword.control.sp</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>trig|targ|tran|pulse|pwl</string>
+			<key>name</key>
+			<string>constant.language.sp</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^[a-zA-Z0-9_]+</string>
+			<key>name</key>
+			<string>variable.parameter.sp</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.sp</string>
+	<key>uuid</key>
+	<string>b46f7485-a428-48e8-a1f8-05e3afb64e0a</string>
+</dict>
+</plist>

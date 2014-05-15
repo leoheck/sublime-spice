@@ -1,0 +1,38 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+# http://stackoverflow.com/questions/10834765/where-to-find-a-list-of-scopes-for-sublime2-or-textmate
+# F7 para dar o build
+# http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html
+# http://manual.macromates.com/en/language_grammars
+
+---
+name: Spice
+scopeName: source.sp
+fileTypes: [sp, cdl, mdl]
+uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
+
+patterns:
+
+- match: \*.*
+  name: comment.line.character.sp
+  comment: Spice Comments.
+
+- begin: \'
+  end: \'
+  name: string.quoted.single.sp
+  comment: Spice Comments.
+
+- begin: \"
+  end: \"
+  name: string.quoted.double.sp
+  comment: Spice Comments.
+
+# - match: \.(tran|measure|end|temp|include)
+- match: ^[ \t]*\.[^ \t]+
+  name: keyword.control.sp
+  comment: Commands start with a dot.
+
+- match: trig|targ|tran|pulse|pwl
+  name: constant.language.sp
+
+- match: ^[a-zA-Z0-9_]+
+  name: variable.parameter.sp
