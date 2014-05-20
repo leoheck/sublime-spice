@@ -1,12 +1,11 @@
-SPICE for Sublime Text
-======================
+# Sublime Text Spice
+Spice Package for Sublime Text. 
 
-Spice Syntax Highlight
+Supports Spice files (*.sp, *.SP)
 
+Instalation from Package Control
 
+Features include:
+ - Syntax Hightlighting
+ - Comment toggle
 
-Install
-=======
-
-- with package controll
-- manual
