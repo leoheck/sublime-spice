@@ -2,90 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>fileTypes</key>
-	<array>
-		<string>sp</string>
-		<string>cdl</string>
-		<string>mdl</string>
-		<string>cir</string>
-		<string>mod</string>
-	</array>
 	<key>name</key>
-	<string>SPICE</string>
-	<key>patterns</key>
-	<array>
-		<dict>
-			<key>comment</key>
-			<string>Comments.</string>
-			<key>match</key>
-			<string>^[ \t]*\*.*</string>
-			<key>name</key>
-			<string>comment.line.character.sp</string>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>\'</string>
-			<key>comment</key>
-			<string>Single quotes.</string>
-			<key>end</key>
-			<string>\'</string>
-			<key>name</key>
-			<string>string.quoted.single.sp</string>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>\"</string>
-			<key>comment</key>
-			<string>Double quotes.</string>
-			<key>end</key>
-			<string>\"</string>
-			<key>name</key>
-			<string>string.quoted.double.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Voltage and current sources.</string>
-			<key>match</key>
-			<string>^([vV]|[iI]|[eE]|[gG]|[hH]|[fF])[a-zA-Z0-9]+</string>
-			<key>name</key>
-			<string>invalid.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Circuit devices.</string>
-			<key>match</key>
-			<string>^([mM]|[rR]|[cC]|[lL]|[kK]|[sS]|[wW]|[xX])[a-zA-Z0-9]+</string>
-			<key>name</key>
-			<string>entity.name.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>SPICE, Spectre, SpiceOPUS general commands.</string>
-			<key>match</key>
-			<string>^(.|)(?i)(control|include|set|let|param|temp|model|subckt|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas||alter)([ ]|$)</string>
-			<key>name</key>
-			<string>keyword.control.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Source functions.</string>
-			<key>match</key>
-			<string>( |\t)+(?i)(sin|dc|pulse|pwl)( |\t)+</string>
-			<key>name</key>
-			<string>keyword.operator.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Measure parameters</string>
-			<key>match</key>
-			<string>(?i)(trig|targ|tran|deriv|when|find|^(\t| )*\+)</string>
-			<key>name</key>
-			<string>constant.sp</string>
-		</dict>
-	</array>
-	<key>scopeName</key>
+	<string>Spice Comments</string>
+	<key>scope</key>
 	<string>source.sp</string>
+	<key>settings</key>
+	<dict>
+		<key>shellVariables</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>TM_COMMENT_START</string>
+				<key>value</key>
+				<string>* </string>
+			</dict>
+		</array>
+	</dict>
 	<key>uuid</key>
-	<string>b46f7485-a428-48e8-a1f8-05e3afb64e0a</string>
+	<string>38DBCCE5-2005-410C-B7D7-013097751AC8</string>
 </dict>
 </plist>
