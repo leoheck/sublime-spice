@@ -7,16 +7,18 @@
 		<string>sp</string>
 		<string>cdl</string>
 		<string>mdl</string>
+		<string>cir</string>
+		<string>mo</string>
 	</array>
 	<key>name</key>
-	<string>Spice</string>
+	<string>SPICE</string>
 	<key>patterns</key>
 	<array>
 		<dict>
 			<key>comment</key>
-			<string>Spice Comments.</string>
+			<string>Comments.</string>
 			<key>match</key>
-			<string>\*.*</string>
+			<string>^[ \t]*\*.*</string>
 			<key>name</key>
 			<string>comment.line.character.sp</string>
 		</dict>
@@ -24,7 +26,7 @@
 			<key>begin</key>
 			<string>\'</string>
 			<key>comment</key>
-			<string>Spice Comments.</string>
+			<string>Single quotes.</string>
 			<key>end</key>
 			<string>\'</string>
 			<key>name</key>
@@ -34,7 +36,7 @@
 			<key>begin</key>
 			<string>\"</string>
 			<key>comment</key>
-			<string>Spice Comments.</string>
+			<string>Double quotes.</string>
 			<key>end</key>
 			<string>\"</string>
 			<key>name</key>
@@ -42,23 +44,43 @@
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>Commands start with a dot.</string>
+			<string>Voltage and current sources.</string>
 			<key>match</key>
-			<string>^[ \t]*\.[^ \t]+</string>
+			<string>^([vV]|[iI]|[eE]|[gG]|[hH]|[fF])[a-zA-Z0-9]+</string>
+			<key>name</key>
+			<string>invalid.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Circuit devices.</string>
+			<key>match</key>
+			<string>^([mM]|[rR]|[cC]|[lL]|[kK]|[sS]|[wW]|[xX])[a-zA-Z0-9]+</string>
+			<key>name</key>
+			<string>entity.name.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>SPICE, Spectre, SpiceOPUS general commands.</string>
+			<key>match</key>
+			<string>^(.|)(?i)(control|include|set|let|param|temp|model|subckt|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas||alter)([ ]|$)</string>
 			<key>name</key>
 			<string>keyword.control.sp</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>Source functions.</string>
 			<key>match</key>
-			<string>trig|targ|tran|pulse|pwl</string>
+			<string>( |\t)+(?i)(sin|dc|pulse|pwl)( |\t)+</string>
 			<key>name</key>
-			<string>constant.language.sp</string>
+			<string>keyword.operator.sp</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>Measure parameters</string>
 			<key>match</key>
-			<string>^[a-zA-Z0-9_]+</string>
+			<string>(?i)(trig|targ|tran|deriv|when|find|^(\t| )*\+)</string>
 			<key>name</key>
-			<string>variable.parameter.sp</string>
+			<string>constant.sp</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
