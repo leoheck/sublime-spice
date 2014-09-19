@@ -1,3 +1,4 @@
+# TESTADN
 # [PackageDev] target_format: plist, ext: tmLanguage
 # http://stackoverflow.com/questions/10834765/where-to-find-a-list-of-scopes-for-sublime2-or-textmate
 # F7 para dar o build
@@ -5,34 +6,53 @@
 # http://manual.macromates.com/en/language_grammars
 
 ---
-name: Spice
+name: SPICE
 scopeName: source.sp
-fileTypes: [sp, cdl, mdl]
+fileTypes: [sp, cdl, mdl, cir, mod]
 uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 
 patterns:
 
-- match: \*.*
+# match firstline (how??)
+# first line needs to be like coment, maybe bold
+
+- match: ^[ \t]*\*.*
   name: comment.line.character.sp
-  comment: Spice Comments.
+  comment: Comments.
 
 - begin: \'
   end: \'
   name: string.quoted.single.sp
-  comment: Spice Comments.
+  comment: Single quotes.
 
 - begin: \"
   end: \"
   name: string.quoted.double.sp
-  comment: Spice Comments.
+  comment: Double quotes.
 
-# - match: \.(tran|measure|end|temp|include)
-- match: ^[ \t]*\.[^ \t]+
+- match: ^([vV]|[iI]|[eE]|[gG]|[hH]|[fF])[a-zA-Z0-9]+
+  name: invalid.sp
+  comment: Voltage and current sources.
+
+- match: ^([mM]|[rR]|[cC]|[lL]|[kK]|[sS]|[wW]|[xX])[a-zA-Z0-9]+
+  name: entity.name.sp
+  comment: Circuit devices.
+
+# Case insensitive com o comando (?i)
+- match: ^(.|)(?i)(control|include|set|let|param|temp|model|subckt|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas||alter)([ ]|$)
   name: keyword.control.sp
-  comment: Commands start with a dot.
+  comment: SPICE, Spectre, SpiceOPUS general commands.
 
-- match: trig|targ|tran|pulse|pwl
-  name: constant.language.sp
+- match: ( |\t)+(?i)(sin|dc|pulse|pwl)( |\t)+
+  name: keyword.operator.sp
+  comment: Source functions.
 
-- match: ^[a-zA-Z0-9_]+
-  name: variable.parameter.sp
+- match: (?i)(trig|targ|tran|deriv|when|find|^(\t| )*\+)
+  name: constant.sp
+  comment: Measure parameters
+
+# generic commands that start with .
+# - match: ^[ \t]*\.[^ \t]+
+  # name: keyword.control.sp
+  # comment: Commands start with a dot.
+
