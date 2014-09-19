@@ -1,11 +1,16 @@
+
 # Sublime Text Spice
 Spice Package for Sublime Text. 
 
-Supports Spice files (*.sp, *.SP)
+Works with regular SPICE, Spectre, SpiceOpus
+Supported extencions: sp, cdl, mdl, cir, mod
 
 Instalation from Package Control
 
 Features include:
  - Syntax Hightlighting
  - Comment toggle
+
+Future:
+ - Create snippets
 
