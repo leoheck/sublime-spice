@@ -1,0 +1,7 @@
+
+<snippet>
+	<tabTrigger>dc</tabTrigger>
+	<scope>source.sp</scope>
+	<content>dc=${1:name}</content>
+	<description>dc function</description>
+</snippet>

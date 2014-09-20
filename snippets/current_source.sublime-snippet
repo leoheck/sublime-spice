@@ -1,0 +1,7 @@
+
+<snippet>
+	<tabTrigger>i</tabTrigger>
+	<scope>source.sp</scope>
+	<content>i${1:name} ${2:node+} ${3:node-} ${4:function}</content>
+	<description>current source</description>
+</snippet>
