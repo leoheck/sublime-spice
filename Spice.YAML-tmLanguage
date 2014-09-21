@@ -31,25 +31,40 @@ patterns:
   comment: Double quotes.
 
 - match: ^([vV]|[iI]|[eE]|[gG]|[hH]|[fF])[a-zA-Z0-9]+
-  name: invalid.sp
+  name: keyword.control.sp
   comment: Voltage and current sources.
+
 
 - match: ^([mM]|[rR]|[cC]|[lL]|[kK]|[sS]|[wW]|[xX])[a-zA-Z0-9]+
   name: entity.name.sp
   comment: Circuit devices.
 
+
 # Case insensitive com o comando (?i)
-- match: ^(.|)(?i)(control|include|set|let|param|temp|model|subckt|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas||alter)([ ]|$)
+- match: "^([.|])(?i:control|include|simulator|set|let|param|temp|model|subckt|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas||alter)"
   name: keyword.control.sp
   comment: SPICE, Spectre, SpiceOPUS general commands.
 
-- match: ( |\t)+(?i)(sin|dc|pulse|pwl)( |\t)+
+
+- match: "(?i:sin|dc|pulse|pwl|exp)[^a-zA-Z0-9]"
   name: keyword.operator.sp
   comment: Source functions.
 
-- match: (?i)(trig|targ|tran|deriv|when|find|^(\t| )*\+)
+- match: "[^a-zA-Z0-9](?i:trig|targ|tran|deriv|when|find)[^a-zA-Z0-9]"
   name: constant.sp
-  comment: Measure parameters
+  comment: command parameters
+
+
+  # captures:
+    # '1': {name: punctuation.definition.comment.line.yaml-tmlanguage}
+    # '2': {name: keyword.operator.sp}
+
+
+    # '1': {name: punctuation.definition.comment.line.yaml-tmlanguage}
+    # '2': {name: punctuation.definition.comment.line.yaml-tmlanguage}
+    # '3': {name: punctuation.definition.comment.line.yaml-tmlanguage}
+
+
 
 # generic commands that start with .
 # - match: ^[ \t]*\.[^ \t]+
