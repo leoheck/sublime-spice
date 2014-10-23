@@ -9,6 +9,7 @@
 		<string>mdl</string>
 		<string>cir</string>
 		<string>mod</string>
+		<string>scs</string>
 	</array>
 	<key>name</key>
 	<string>SPICE</string>
@@ -46,6 +47,14 @@
 			<key>comment</key>
 			<string>Voltage and current sources.</string>
 			<key>match</key>
+			<string>^([ \t])*//.*+</string>
+			<key>name</key>
+			<string>comment.line.character.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Voltage and current sources.</string>
+			<key>match</key>
 			<string>^([vV]|[iI]|[eE]|[gG]|[hH]|[fF])[a-zA-Z0-9]+</string>
 			<key>name</key>
 			<string>keyword.control.sp</string>
@@ -62,7 +71,7 @@
 			<key>comment</key>
 			<string>SPICE, Spectre, SpiceOPUS general commands.</string>
 			<key>match</key>
-			<string>^.(?i:control|option|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter)</string>
+			<string>^.(?i:control|option|parameters|option|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|parameters)</string>
 			<key>name</key>
 			<string>keyword.control.sp</string>
 		</dict>
@@ -70,7 +79,7 @@
 			<key>comment</key>
 			<string>SPECTRE specific commands.</string>
 			<key>match</key>
-			<string>^(?i:control|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|section|endsection|parameters|statistics|process|simulator)</string>
+			<string>^(?i:control|option|parameters|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|section|endsection|parameters|statistics|process|simulator)</string>
 			<key>name</key>
 			<string>keyword.control.sp</string>
 		</dict>

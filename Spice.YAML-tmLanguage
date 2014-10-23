@@ -1,4 +1,4 @@
-# TESTADN
+
 # [PackageDev] target_format: plist, ext: tmLanguage
 # http://stackoverflow.com/questions/10834765/where-to-find-a-list-of-scopes-for-sublime2-or-textmate
 # F7 para dar o build
@@ -8,7 +8,7 @@
 ---
 name: SPICE
 scopeName: source.sp
-fileTypes: [sp, cdl, mdl, cir, mod]
+fileTypes: [sp, cdl, mdl, cir, mod, scs]
 uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 
 patterns:
@@ -32,24 +32,34 @@ patterns:
   name: string.quoted.double.sp
   comment: Double quotes.
 
+# SPECTRE/HSPICE comments
+- match: ^([ \t])*//.*+
+  name: comment.line.character.sp
+  comment: Voltage and current sources.
+
 - match: ^([vV]|[iI]|[eE]|[gG]|[hH]|[fF])[a-zA-Z0-9]+
   name: keyword.control.sp
   comment: Voltage and current sources.
 
+# DESTACAR ASPAS SIMPLES E DUPLAS
 
+# DESTACAR O NOME DO SUBCIRCUITO
+# DESTACAR O NOME OPCIONAL NO FECHAMENTO DO SUBCIRCUITO
+
+# DIFERENCIAR CIRCUITOS PADROES DE SUBCIRCUITOS PARA FACILITAR DE FONTES TB
 - match: ^([mM]|[rR]|[cC]|[lL]|[kK]|[sS]|[wW]|[xX])[a-zA-Z0-9]+
   name: entity.name.sp
   comment: Circuit devices.
 
 # General SPICE commands
 # todo: modifcar a cor do highlight
-- match: "^.(?i:control|option|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter)"
+- match: "^.(?i:control|option|parameters|option|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|parameters)"
   name: keyword.control.sp
   comment: SPICE, Spectre, SpiceOPUS general commands.
 
 # SPECTRE specific commands
 # todo: modifcar a cor do highlight
-- match: "^(?i:control|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|section|endsection|parameters|statistics|process|simulator)"
+- match: "^(?i:control|option|parameters|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|section|endsection|parameters|statistics|process|simulator)"
   name: keyword.control.sp
   comment: SPECTRE specific commands.
 
