@@ -13,6 +13,8 @@ uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 
 patterns:
 
+# Assume case insensitive com regexp: ?i
+
 # match firstline (how??)
 # first line needs to be like coment, maybe bold
 
@@ -39,17 +41,36 @@ patterns:
   name: entity.name.sp
   comment: Circuit devices.
 
-
-# Case insensitive com o comando (?i)
-- match: "^([.|])(?i:control|include|simulator|set|let|param|temp|model|subckt|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas||alter)"
+# General SPICE commands
+# todo: modifcar a cor do highlight
+- match: "^.(?i:control|option|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter)"
   name: keyword.control.sp
   comment: SPICE, Spectre, SpiceOPUS general commands.
 
+# SPECTRE specific commands
+# todo: modifcar a cor do highlight
+- match: "^(?i:control|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|section|endsection|parameters|statistics|process|simulator)"
+  name: keyword.control.sp
+  comment: SPECTRE specific commands.
 
+# HSPICE specific commands
+# todo: modifcar a cor do highlight
+# - match:
+#   name: keyword.control.sp
+#   comment: SPICEOPUS specific commands.
+
+# SPICEOPUS Specific
+# todo: modifcar a cor do highlight
+# - match:
+#   name: keyword.control.sp
+#   comment: SPICEOPUS specific commands.
+
+# funcoes
 - match: "(?i:sin|dc|pulse|pwl|exp)[^a-zA-Z0-9]"
   name: keyword.operator.sp
   comment: Source functions.
 
+# parametros
 - match: "[^a-zA-Z0-9](?i:trig|targ|tran|deriv|when|find)[^a-zA-Z0-9]"
   name: constant.sp
   comment: command parameters

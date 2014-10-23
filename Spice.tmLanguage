@@ -62,7 +62,15 @@
 			<key>comment</key>
 			<string>SPICE, Spectre, SpiceOPUS general commands.</string>
 			<key>match</key>
-			<string>^([.|])(?i:control|include|simulator|set|let|param|temp|model|subckt|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas||alter)</string>
+			<string>^.(?i:control|option|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter)</string>
+			<key>name</key>
+			<string>keyword.control.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>SPECTRE specific commands.</string>
+			<key>match</key>
+			<string>^(?i:control|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|section|endsection|parameters|statistics|process|simulator)</string>
 			<key>name</key>
 			<string>keyword.control.sp</string>
 		</dict>
