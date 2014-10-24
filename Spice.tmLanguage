@@ -10,6 +10,7 @@
 		<string>cir</string>
 		<string>mod</string>
 		<string>scs</string>
+		<string>spi</string>
 	</array>
 	<key>name</key>
 	<string>SPICE</string>

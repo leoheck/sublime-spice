@@ -8,7 +8,7 @@
 ---
 name: SPICE
 scopeName: source.sp
-fileTypes: [sp, cdl, mdl, cir, mod, scs]
+fileTypes: [sp, cdl, mdl, cir, mod, scs, spi]
 uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 
 patterns:
