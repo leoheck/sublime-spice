@@ -3,10 +3,11 @@
 
 SPICE Circuit Simulation package for Sublime Text. 
 
-Works with regular SPICE, Spectre, SpiceOpus
-Supported extencions: sp, cdl, mdl, cir, mod
+Works with regular SPICE, HSpice, Spectre, SpiceOpus
+Supported extencions: sp, cdl, mdl, cir, mod, scs, spi
 
-Instalation from Package Control
+Install using Package Control
+https://sublime.wbond.net/packages/Spice
 
 Features:
  - Syntax Hightlighting
@@ -14,4 +15,3 @@ Features:
 
 Future:
  - Create snippets
-
