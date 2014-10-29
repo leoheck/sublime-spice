@@ -16,3 +16,9 @@ Features:
 
 Future:
  - Create snippets
+
+Extra:
+ - [Open Liberty](https://sublime.wbond.net/packages/Liberty) (.lib)
+ - [Synopsys Constraints](https://sublime.wbond.net/packages) (.sdc)
+ - [Library Exchange Format](https://sublime.wbond.net/package) (.lef)
+ 
