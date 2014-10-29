@@ -1,0 +1,13 @@
+{
+    "settings": {
+        "shellVariables": [
+            {
+                "value": "* ", 
+                "name": "TM_COMMENT_START"
+            }
+        ]
+    }, 
+    "name": "Spice Comments", 
+    "scope": "source.sp", 
+    "uuid": "38DBCCE5-2005-410C-B7D7-013097751AC8"
+}
