@@ -18,7 +18,7 @@ Future:
  - Create snippets
 
 Extra:
- - [Open Liberty](https://sublime.wbond.net/packages/Liberty) (.lib)
- - [Synopsys Constraints](https://sublime.wbond.net/packages) (.sdc)
+ - [Open Liberty](https://github.com/mtmoreira/sublime-liberty) (.lib)
+ - [Synopsys Constraints](https://github.com/leoheck/sublime-synopsys-constraints) (.sdc)
  - [Library Exchange Format](https://sublime.wbond.net/package) (.lef)
  
