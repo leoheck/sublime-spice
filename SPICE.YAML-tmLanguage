@@ -1,8 +1,12 @@
+# Leandro Sehnem Heck (leoheck@gmail.com)
 
-# [PackageDev] target_format: plist, ext: tmLanguage
-# http://stackoverflow.com/questions/10834765/where-to-find-a-list-of-scopes-for-sublime2-or-textmate
-# F7 para dar o build
+# Use F7 to convert this .YAML-tmlanguage to sublime .tmLanguage (property list) files
+
+# Sublime text documentation:
 # http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html
+
+# Sublime text (textmate) scopes (syntax colors):
+# http://stackoverflow.com/questions/10834765/where-to-find-a-list-of-scopes-for-sublime2-or-textmate
 # http://manual.macromates.com/en/language_grammars
 
 ---
@@ -13,15 +17,21 @@ uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 
 patterns:
 
-# Assume case insensitive com regexp: ?i
+# Case insensitive regexp: ?i
 
-# match firstline (how??)
-# first line needs to be like coment, maybe bold
-
+# General comments
 - match: ^[ \t]*\*.*
   name: comment.line.character.sp
   comment: Comments.
 
+# SPECTRE/HSPICE comments
+- match: ^([ \t])*//.*+
+  name: comment.line.character.sp
+  comment: Voltage and current sources.
+
+
+#==============================================================================
+# Quotes
 - begin: \'
   end: \'
   name: string.quoted.single.sp
@@ -32,73 +42,110 @@ patterns:
   name: string.quoted.double.sp
   comment: Double quotes.
 
-# SPECTRE/HSPICE comments
-- match: ^([ \t])*//.*+
-  name: comment.line.character.sp
-  comment: Voltage and current sources.
 
-- match: ^([vV]|[iI]|[eE]|[gG]|[hH]|[fF])[a-zA-Z0-9]+
+#==============================================================================
+# Keywords
+
+# General SPICE (sorted in reverse order to avoid shaddow commands)
+- match: ^[ \t]*[.]?(?i:tran|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac)
   name: keyword.control.sp
-  comment: Voltage and current sources.
+  comment: SPECTRE specific commands
 
-# DESTACAR ASPAS SIMPLES E DUPLAS
-
-# DESTACAR O NOME DO SUBCIRCUITO
-# DESTACAR O NOME OPCIONAL NO FECHAMENTO DO SUBCIRCUITO
-
-# DIFERENCIAR CIRCUITOS PADROES DE SUBCIRCUITOS PARA FACILITAR DE FONTES TB
-- match: ^([mM]|[rR]|[cC]|[lL]|[kK]|[sS]|[wW]|[xX])[a-zA-Z0-9]+
-  name: entity.name.sp
-  comment: Circuit devices.
-
-# General SPICE commands
-# todo: modifcar a cor do highlight
-- match: "^.(?i:control|option|parameters|option|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|parameters)"
+# SPICEOPUS specific
+- match: ^[ \t]*[.]?(?i:destroy|plot)
   name: keyword.control.sp
-  comment: SPICE, Spectre, SpiceOPUS general commands.
+  comment: SPICEOPUS commands.
 
-# SPECTRE specific commands
-# todo: modifcar a cor do highlight
-- match: "^(?i:control|option|parameters|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|section|endsection|parameters|statistics|process|simulator)"
-  name: keyword.control.sp
-  comment: SPECTRE specific commands.
+# HSPICE specific
+# - match: 
+  # name: keyword.control.sp
+  # comment: HSPICE specific commands.
 
-# HSPICE specific commands
-# todo: modifcar a cor do highlight
-# - match:
-#   name: keyword.control.sp
-#   comment: SPICEOPUS specific commands.
+# SPECTRE specific
+# - match: 
+  # name: keyword.control.sp
+  # comment: SPECTRE specific commands.
 
-# SPICEOPUS Specific
-# todo: modifcar a cor do highlight
-# - match:
-#   name: keyword.control.sp
-#   comment: SPICEOPUS specific commands.
 
-# funcoes
-- match: "(?i:sin|dc|pulse|pwl|exp)[^a-zA-Z0-9]"
-  name: keyword.operator.sp
-  comment: Source functions.
+#==============================================================================
+# Parameters
 
-# parametros
-- match: "[^a-zA-Z0-9](?i:trig|targ|tran|deriv|when|find)[^a-zA-Z0-9]"
-  name: constant.sp
+- match: "\s*(?i:when|trig|tran|targ|find|deriv)[^a-zA-Z0-9]\s*"
+  captures:
+    '0': {name: keyword.operator.sp}
+    # '2': {name: keyword.operator.sp}  
   comment: command parameters
 
 
-  # captures:
-    # '1': {name: punctuation.definition.comment.line.yaml-tmlanguage}
-    # '2': {name: keyword.operator.sp}
+#==============================================================================
+# Built-in Functions
+
+# PROBLEM: HOW TO MATCH ONLY THE WHOLE WORD
+# NOT WORKING
+
+- match: (?i:dc|pulse|pwl)[ \t]+
+  captures:
+    '0': {name: keyword.operator.sp}  
+    '2': {name: keyword.operator.sp}
+  comment: Waveform functions
+
+- match: (?i:[sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i][ \t]*\()[ \t]*\s*[ \t]*(\))
+  captures:
+    '0': {name: keyword.operator.sp}  
+    '2': {name: keyword.operator.sp}
+  comment: Liberty parameters.
 
 
-    # '1': {name: punctuation.definition.comment.line.yaml-tmlanguage}
-    # '2': {name: punctuation.definition.comment.line.yaml-tmlanguage}
-    # '3': {name: punctuation.definition.comment.line.yaml-tmlanguage}
+#==============================================================================
+# Devices
+
+- match: ^[ \t]*(?i:v|i|e|g|h|f)[a-zA-Z0-9_@]+
+  name: keyword.operator.sp
+  comment: Voltage and current sources.
+
+- match: ^[ \t]*(?i:m|r|c|l|k|s|w)[a-zA-Z0-9_@]+
+  name: keyword.sp
+  comment: Built-in devices.
+
+- match: ^[ \t]*(?i:x)[a-zA-Z0-9_@]+
+  name: entity.sp
+  comment: Subcircuits.
+
+
+#==============================================================================
+# Break lines
+
+- match: ^[ \t]*\+
+  name: string.quoted.single.sp
+  comment: Break line symbol at begin of line
+
+# I dont know if SPICE handle this constructs
+- match: \+[ \t]$
+  name: string.quoted.single.sp
+  comment: At end of line
 
 
 
-# generic commands that start with .
-# - match: ^[ \t]*\.[^ \t]+
-  # name: keyword.control.sp
-  # comment: Commands start with a dot.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

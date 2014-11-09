@@ -25,6 +25,14 @@
 			<string>comment.line.character.sp</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>Voltage and current sources.</string>
+			<key>match</key>
+			<string>^([ \t])*//.*+</string>
+			<key>name</key>
+			<string>comment.line.character.sp</string>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>\'</string>
 			<key>comment</key>
@@ -46,59 +54,97 @@
 		</dict>
 		<dict>
 			<key>comment</key>
+			<string>SPECTRE specific commands</string>
+			<key>match</key>
+			<string>^[ \t]*[.]?(?i:tran|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac)</string>
+			<key>name</key>
+			<string>keyword.control.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>SPICEOPUS commands.</string>
+			<key>match</key>
+			<string>^[ \t]*[.]?(?i:destroy|plot)</string>
+			<key>name</key>
+			<string>keyword.control.sp</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.sp</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.sp</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Waveform functions</string>
+			<key>match</key>
+			<string>(?i:dc|pulse|pwl)[ \t]+</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.sp</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.sp</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Liberty parameters.</string>
+			<key>match</key>
+			<string>(?i:[sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i][ \t]*\()[ \t]*\s*[ \t]*(\))</string>
+		</dict>
+		<dict>
+			<key>comment</key>
 			<string>Voltage and current sources.</string>
 			<key>match</key>
-			<string>^([ \t])*//.*+</string>
-			<key>name</key>
-			<string>comment.line.character.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Voltage and current sources.</string>
-			<key>match</key>
-			<string>^([vV]|[iI]|[eE]|[gG]|[hH]|[fF])[a-zA-Z0-9]+</string>
-			<key>name</key>
-			<string>keyword.control.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Circuit devices.</string>
-			<key>match</key>
-			<string>^([mM]|[rR]|[cC]|[lL]|[kK]|[sS]|[wW]|[xX])[a-zA-Z0-9]+</string>
-			<key>name</key>
-			<string>entity.name.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>SPICE, Spectre, SpiceOPUS general commands.</string>
-			<key>match</key>
-			<string>^.(?i:control|option|parameters|option|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|parameters)</string>
-			<key>name</key>
-			<string>keyword.control.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>SPECTRE specific commands.</string>
-			<key>match</key>
-			<string>^(?i:control|option|parameters|include|simulator|set|let|param|temp|model|subckt|lib|endl|ends|endc|end|op|dc|tf|sens|tran|ic|ac|noise|disto|four|print|plot|probe|measure|meas|alter|section|endsection|parameters|statistics|process|simulator)</string>
-			<key>name</key>
-			<string>keyword.control.sp</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Source functions.</string>
-			<key>match</key>
-			<string>(?i:sin|dc|pulse|pwl|exp)[^a-zA-Z0-9]</string>
+			<string>^[ \t]*(?i:v|i|e|g|h|f)[a-zA-Z0-9_@]+</string>
 			<key>name</key>
 			<string>keyword.operator.sp</string>
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>command parameters</string>
+			<string>Built-in devices.</string>
 			<key>match</key>
-			<string>[^a-zA-Z0-9](?i:trig|targ|tran|deriv|when|find)[^a-zA-Z0-9]</string>
+			<string>^[ \t]*(?i:m|r|c|l|k|s|w)[a-zA-Z0-9_@]+</string>
 			<key>name</key>
-			<string>constant.sp</string>
+			<string>keyword.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Subcircuits.</string>
+			<key>match</key>
+			<string>^[ \t]*(?i:x)[a-zA-Z0-9_@]+</string>
+			<key>name</key>
+			<string>entity.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Break line symbol at begin of line</string>
+			<key>match</key>
+			<string>^[ \t]*\+</string>
+			<key>name</key>
+			<string>string.quoted.single.sp</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>At end of line</string>
+			<key>match</key>
+			<string>\+[ \t]$</string>
+			<key>name</key>
+			<string>string.quoted.single.sp</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
