@@ -21,4 +21,4 @@ Extra:
  - [Open Liberty](https://github.com/mtmoreira/sublime-liberty) (.lib)
  - [Synopsys Constraints](https://github.com/leoheck/sublime-synopsys-constraints) (.sdc)
  - [Library Exchange Format](https://sublime.wbond.net/package) (.lef)
- 
+ - [Cadence Skill](https://github.com/noisyass2/SublimeCadenceSkill)
