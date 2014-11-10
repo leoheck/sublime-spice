@@ -47,8 +47,9 @@ patterns:
 # Keywords
 
 # General SPICE (sorted in reverse order to avoid shaddow commands)
-- match: ^[ \t]*[.]?(?i:tran|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac)
-  name: keyword.control.sp
+- match: ([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[ \t]*[=]?
+  captures:
+    '0': {name: keyword.operator.sp}
   comment: SPECTRE specific commands
 
 # SPICEOPUS specific
@@ -70,29 +71,23 @@ patterns:
 #==============================================================================
 # Parameters
 
-- match: "\s*(?i:when|trig|tran|targ|find|deriv)[^a-zA-Z0-9]\s*"
+- match: ((?i:when|trig|tran|targ|find|deriv)).*
   captures:
     '0': {name: keyword.operator.sp}
-    # '2': {name: keyword.operator.sp}  
   comment: command parameters
 
 
 #==============================================================================
 # Built-in Functions
 
-# PROBLEM: HOW TO MATCH ONLY THE WHOLE WORD
-# NOT WORKING
-
-- match: (?i:dc|pulse|pwl)[ \t]+
+- match: ((?i:dc|pulse|pwl))[^\a-zA-Z0-9_]
   captures:
-    '0': {name: keyword.operator.sp}  
-    '2': {name: keyword.operator.sp}
+    '0': {name: keyword.operator.sp}
   comment: Waveform functions
 
-- match: (?i:[sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i][ \t]*\()[ \t]*\s*[ \t]*(\))
+- match: ((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i))[ \t]*(\().*(\))
   captures:
-    '0': {name: keyword.operator.sp}  
-    '2': {name: keyword.operator.sp}
+    '1': {name: keyword.operator.sp}
   comment: Liberty parameters.
 
 
