@@ -64,13 +64,13 @@
 			<key>comment</key>
 			<string>SPECTRE specific commands</string>
 			<key>match</key>
-			<string>([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[ \t]*[=]?</string>
+			<string>([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[^a-zA-Z0-9_]</string>
 		</dict>
 		<dict>
 			<key>comment</key>
 			<string>SPICEOPUS commands.</string>
 			<key>match</key>
-			<string>^[ \t]*[.]?(?i:destroy|plot)</string>
+			<string>^[ \t]*[.]?(?i:destroy|plot)[^a-zA-Z0-9_]</string>
 			<key>name</key>
 			<string>keyword.control.sp</string>
 		</dict>
@@ -86,7 +86,7 @@
 			<key>comment</key>
 			<string>command parameters</string>
 			<key>match</key>
-			<string>((?i:when|trig|tran|targ|find|deriv)).*</string>
+			<string>((?i:when|trig|tran|targ|find|deriv))[^a-zA-Z0-9_]</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -100,7 +100,7 @@
 			<key>comment</key>
 			<string>Waveform functions</string>
 			<key>match</key>
-			<string>((?i:dc|pulse|pwl))[^\a-zA-Z0-9_]</string>
+			<string>((?i:dc|pulse|pwl))[^a-zA-Z0-9_]</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -134,7 +134,7 @@
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>Subcircuits.</string>
+			<string>Sub circuits.</string>
 			<key>match</key>
 			<string>^[ \t]*(?i:x)[a-zA-Z0-9_@]+</string>
 			<key>name</key>
