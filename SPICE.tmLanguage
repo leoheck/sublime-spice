@@ -20,7 +20,7 @@
 			<key>comment</key>
 			<string>Comments.</string>
 			<key>match</key>
-			<string>^[ \t]*\*.*</string>
+			<string>\*.*</string>
 			<key>name</key>
 			<string>comment.line.character.sp</string>
 		</dict>
@@ -53,26 +53,26 @@
 			<string>string.quoted.double.sp</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>SPECTRE specific commands</string>
+			<key>match</key>
+			<string>(\.?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[^a-zA-Z0-9_]</string>
+			<key>name</key>
+			<string>keyword.operator.sp</string>
+		</dict>
+		<dict>
 			<key>captures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.operator.sp</string>
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>SPECTRE specific commands</string>
-			<key>match</key>
-			<string>([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[ \t]*[=]?</string>
-		</dict>
-		<dict>
-			<key>comment</key>
 			<string>SPICEOPUS commands.</string>
 			<key>match</key>
-			<string>^[ \t]*[.]?(?i:destroy|plot)</string>
-			<key>name</key>
-			<string>keyword.control.sp</string>
+			<string>((?i:destroy|plot))[^a-zA-Z0-9_]</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -86,21 +86,7 @@
 			<key>comment</key>
 			<string>command parameters</string>
 			<key>match</key>
-			<string>((?i:when|trig|tran|targ|find|deriv)).*</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.sp</string>
-				</dict>
-			</dict>
-			<key>comment</key>
-			<string>Waveform functions</string>
-			<key>match</key>
-			<string>((?i:dc|pulse|pwl))[^\a-zA-Z0-9_]</string>
+			<string>((?i:when|trig|tran|targ|find|deriv))[^a-zA-Z0-9_]</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -108,13 +94,27 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.sp</string>
+					<string>constant.character.sp</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Waveform functions</string>
+			<key>match</key>
+			<string>((?i:dc|pulse|pwl))[^a-zA-Z0-9_]</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.character.sp</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Liberty parameters.</string>
 			<key>match</key>
-			<string>((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i))[ \t]*(\().*(\))</string>
+			<string>((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i))[^a-zA-Z0-9_]</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -122,7 +122,7 @@
 			<key>match</key>
 			<string>^[ \t]*(?i:v|i|e|g|h|f)[a-zA-Z0-9_@]+</string>
 			<key>name</key>
-			<string>keyword.operator.sp</string>
+			<string>entity.name.tag.sp</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -130,7 +130,7 @@
 			<key>match</key>
 			<string>^[ \t]*(?i:m|r|c|l|k|s|w)[a-zA-Z0-9_@]+</string>
 			<key>name</key>
-			<string>keyword.sp</string>
+			<string>support.type.sp</string>
 		</dict>
 		<dict>
 			<key>comment</key>

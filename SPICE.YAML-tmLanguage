@@ -20,7 +20,7 @@ patterns:
 # Case insensitive regexp: ?i
 
 # General comments
-- match: ^[ \t]*\*.*
+- match: \*.*
   name: comment.line.character.sp
   comment: Comments.
 
@@ -47,14 +47,14 @@ patterns:
 # Keywords
 
 # General SPICE (sorted in reverse order to avoid shaddow commands)
-- match: ([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[ \t]*[=]?
-  captures:
-    '0': {name: keyword.operator.sp}
+- match: (\.?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[^a-zA-Z0-9_]
+  name: keyword.operator.sp
   comment: SPECTRE specific commands
 
 # SPICEOPUS specific
-- match: ^[ \t]*[.]?(?i:destroy|plot)
-  name: keyword.control.sp
+- match: ((?i:destroy|plot))[^a-zA-Z0-9_]
+  captures:
+    '1': {name: keyword.operator.sp}
   comment: SPICEOPUS commands.
 
 # HSPICE specific
@@ -71,7 +71,7 @@ patterns:
 #==============================================================================
 # Parameters
 
-- match: ((?i:when|trig|tran|targ|find|deriv)).*
+- match: ((?i:when|trig|tran|targ|find|deriv))[^a-zA-Z0-9_]
   captures:
     '0': {name: keyword.operator.sp}
   comment: command parameters
@@ -80,14 +80,14 @@ patterns:
 #==============================================================================
 # Built-in Functions
 
-- match: ((?i:dc|pulse|pwl))[^\a-zA-Z0-9_]
+- match: ((?i:dc|pulse|pwl))[^a-zA-Z0-9_]
   captures:
-    '0': {name: keyword.operator.sp}
+    '1': {name: constant.character.sp}
   comment: Waveform functions
 
-- match: ((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i))[ \t]*(\().*(\))
+- match: ((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i))[^a-zA-Z0-9_]
   captures:
-    '1': {name: keyword.operator.sp}
+    '1': {name: constant.character.sp}
   comment: Liberty parameters.
 
 
@@ -95,11 +95,11 @@ patterns:
 # Devices
 
 - match: ^[ \t]*(?i:v|i|e|g|h|f)[a-zA-Z0-9_@]+
-  name: keyword.operator.sp
+  name: entity.name.tag.sp
   comment: Voltage and current sources.
 
 - match: ^[ \t]*(?i:m|r|c|l|k|s|w)[a-zA-Z0-9_@]+
-  name: keyword.sp
+  name: support.type.sp
   comment: Built-in devices.
 
 - match: ^[ \t]*(?i:x)[a-zA-Z0-9_@]+
