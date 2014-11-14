@@ -77,6 +77,14 @@ patterns:
     '0': {name: keyword.operator.sp}
   comment: command parameters
 
+#==============================================================================
+# Optional parameters
+
+- match: ([a-zA-Z0-9_]+)[ \t]*=
+  captures:
+    '1': {name: constant.character.sp}
+  comment: Waveform functions
+
 
 #==============================================================================
 # Built-in Functions
