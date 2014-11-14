@@ -47,23 +47,24 @@ patterns:
 # Keywords
 
 # General SPICE (sorted in reverse order to avoid shaddow commands)
-- match: (\.?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[^a-zA-Z0-9_]
-  name: keyword.operator.sp
+
+- match: ([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[^a-zA-Z0-9_]
+  captures:
+    '1': {name: keyword.operator.sp}
   comment: SPECTRE specific commands
 
 # SPICEOPUS specific
-- match: ((?i:destroy|plot))[^a-zA-Z0-9_]
-  captures:
-    '1': {name: keyword.operator.sp}
+- match: ^[ \t]*[.]?(?i:destroy|plot)[^a-zA-Z0-9_]
+  name: keyword.control.sp
   comment: SPICEOPUS commands.
 
 # HSPICE specific
-# - match: 
+# - match:
   # name: keyword.control.sp
   # comment: HSPICE specific commands.
 
 # SPECTRE specific
-# - match: 
+# - match:
   # name: keyword.control.sp
   # comment: SPECTRE specific commands.
 
@@ -104,7 +105,7 @@ patterns:
 
 - match: ^[ \t]*(?i:x)[a-zA-Z0-9_@]+
   name: entity.sp
-  comment: Subcircuits.
+  comment: Sub circuits.
 
 
 #==============================================================================
@@ -114,7 +115,7 @@ patterns:
   name: string.quoted.single.sp
   comment: Break line symbol at begin of line
 
-# I dont know if SPICE handle this constructs
+# I don't know if SPICE handle this constructs
 - match: \+[ \t]$
   name: string.quoted.single.sp
   comment: At end of line
