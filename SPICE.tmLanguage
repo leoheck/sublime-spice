@@ -64,7 +64,21 @@
 			<key>comment</key>
 			<string>SPECTRE specific commands</string>
 			<key>match</key>
-			<string>([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|endsection|ends|endl|endc|end|disto|dc|control|alter|ac))[^a-zA-Z0-9_]</string>
+			<string>([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|disto|dc|control|alter|ac))[^a-zA-Z0-9_]</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.sp</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>SPECTRE specific commands</string>
+			<key>match</key>
+			<string>^[ \t]*([\.]?(?i:endsection|ends|endl|endc|end))([^a-zA-Z0-9_]|$)</string>
 		</dict>
 		<dict>
 			<key>comment</key>
