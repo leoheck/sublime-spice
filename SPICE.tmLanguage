@@ -20,7 +20,7 @@
 			<key>comment</key>
 			<string>Comments.</string>
 			<key>match</key>
-			<string>\*.*</string>
+			<string>^[ \t]*\*.*</string>
 			<key>name</key>
 			<string>comment.line.character.sp</string>
 		</dict>
@@ -28,7 +28,7 @@
 			<key>comment</key>
 			<string>Voltage and current sources.</string>
 			<key>match</key>
-			<string>^([ \t])*//.*+</string>
+			<string>^[ \t]*//.*</string>
 			<key>name</key>
 			<string>comment.line.character.sp</string>
 		</dict>

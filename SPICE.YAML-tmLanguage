@@ -20,12 +20,12 @@ patterns:
 # Case insensitive regexp: ?i
 
 # General comments
-- match: \*.*
+- match: ^[ \t]*\*.*
   name: comment.line.character.sp
   comment: Comments.
 
 # SPECTRE/HSPICE comments
-- match: ^([ \t])*//.*+
+- match: ^[ \t]*//.*
   name: comment.line.character.sp
   comment: Voltage and current sources.
 
