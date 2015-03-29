@@ -24,6 +24,6 @@ Install using Package Control [SPICE](https://sublime.wbond.net/packages/Spice)
 
 
 #### Sample
-![Sample screenshot](/misc/sample.png?raw=true "Optional Title")
+![Sample screenshot](https://github.com/leoheck/sublime-spice/blob/master/misc/sample.png?raw=true "Optional Title")
 
 * Using syntax color theme [Monokai Extended](https://github.com/jonschlinkert/sublime-monokai-extended)
