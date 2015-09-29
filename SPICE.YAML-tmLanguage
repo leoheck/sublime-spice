@@ -9,11 +9,37 @@
 # http://stackoverflow.com/questions/10834765/where-to-find-a-list-of-scopes-for-sublime2-or-textmate
 # http://manual.macromates.com/en/language_grammars
 
+
+# EXEMPLO BOM, OLHAR
+# https://github.com/SublimeText/AAAPackageDev/blob/master/Syntax%20Definitions/Sublime%20Text%20Syntax%20Def%20(YAML).YAML-tmLanguage
+
 ---
 name: SPICE
 scopeName: source.sp
 fileTypes: [sp, cdl, mdl, cir, mod, scs, spi]
 uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
+
+# EXAMPLE: https://manual.macromates.com/en/language_grammars#naming_conventions
+#  {  scopeName = 'source.untitled';
+#     fileTypes = ( );
+#     foldingStartMarker = '\{\s*$';
+#     foldingStopMarker = '^\s*\}';
+#     patterns = (
+#        {  name = 'keyword.control.untitled';
+#           match = '\b(if|while|for|return)\b';
+#        },
+#        {  name = 'string.quoted.double.untitled';
+#           begin = '"';
+#           end = '"';
+#           patterns = (
+#              {  name = 'constant.character.escape.untitled';
+#                 match = '\\.';
+#              }
+#           );
+#        },
+#     );
+#  }
+
 
 patterns:
 
@@ -99,11 +125,18 @@ patterns:
     '1': {name: constant.character.sp}
   comment: Waveform functions
 
-- match: ((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i))[^a-zA-Z0-9_]
+- match: ((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lx|i))[^a-zA-Z0-9_]
   captures:
     '1': {name: constant.character.sp}
   comment: Liberty parameters.
 
+# TESTE PARA VER SE CONSIGO MELHORAR ISSO
+- match: ((lv|v|i))[\s]*(\()[\s]*([a-zA-Z0-9 ]+)[\s]*(\))
+  captures:
+    '1': {name: 'constant.character.sp'}
+    # '2': {name: 'constant.character.sp'}
+    # '4': {name: 'constant.character.sp'}
+  comment: TESTANDO.
 
 #==============================================================================
 # Devices

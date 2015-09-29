@@ -13,7 +13,7 @@
 		<string>spi</string>
 	</array>
 	<key>name</key>
-	<string>SPICE</string>
+	<string>SPICE_NEW_UHULLL</string>
 	<key>patterns</key>
 	<array>
 		<dict>
@@ -142,7 +142,21 @@
 			<key>comment</key>
 			<string>Liberty parameters.</string>
 			<key>match</key>
-			<string>((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lv|lx|v|i))[^a-zA-Z0-9_]</string>
+			<string>((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lx|i))[^a-zA-Z0-9_]</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.character.sp</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>TESTANDO.</string>
+			<key>match</key>
+			<string>((lv|v|i))[\s]*(\()[\s]*([a-zA-Z0-9 ]+)[\s]*(\))</string>
 		</dict>
 		<dict>
 			<key>comment</key>
