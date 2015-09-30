@@ -13,7 +13,7 @@
 		<string>spi</string>
 	</array>
 	<key>name</key>
-	<string>SPICE_NEW</string>
+	<string>SPICE</string>
 	<key>patterns</key>
 	<array>
 		<dict>
