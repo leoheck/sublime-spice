@@ -1,0 +1,11 @@
+
+<snippet>
+<tabTrigger>sub</tabTrigger>
+<scope>source.sp</scope>
+<content>
+.subckt ${1:name} ${2:[parameters]}
+${3:* Subcircuit Body}
+.ends $1
+</content>
+<description>subcircuit</description>
+</snippet>

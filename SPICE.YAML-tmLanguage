@@ -19,139 +19,130 @@ scopeName: source.sp
 fileTypes: [sp, cdl, mdl, cir, mod, scs, spi]
 uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 
-# EXAMPLE: https://manual.macromates.com/en/language_grammars#naming_conventions
-#  {  scopeName = 'source.untitled';
-#     fileTypes = ( );
-#     foldingStartMarker = '\{\s*$';
-#     foldingStopMarker = '^\s*\}';
-#     patterns = (
-#        {  name = 'keyword.control.untitled';
-#           match = '\b(if|while|for|return)\b';
-#        },
-#        {  name = 'string.quoted.double.untitled';
-#           begin = '"';
-#           end = '"';
-#           patterns = (
-#              {  name = 'constant.character.escape.untitled';
-#                 match = '\\.';
-#              }
-#           );
-#        },
-#     );
-#  }
-
-
 patterns:
 
-# Case insensitive regexp: ?i
-
-# General comments
-- match: ^[ \t]*\*.*
+- comment: General SPICE Comments
   name: comment.line.character.sp
-  comment: Comments.
+  match: ^[ \t]*\*.*
 
-# SPECTRE/HSPICE comments
-- match: ^[ \t]*//.*
+- comment: SPECTRE|HSPICE comments
   name: comment.line.character.sp
-  comment: Voltage and current sources.
+  match: ^[ \t]*//.*
+
+- comment: PSPICE|NGSPIE inline comment
+  name: comment.line.character.sp
+  begin: \;
+  end: $
+
+- comment: NGSPICE inline comment
+  name: comment.line.character.sp
+  begin: \$
+  end: $
+
+- comment: SPECTRE inline comment
+  name: comment.line.character.sp
+  begin: \*
+  end: $
 
 
-#==============================================================================
-# Quotes
-- begin: \'
+
+
+# - comment: Charactes that are treated like spaces
+#   name: comment.line.character.sp
+#   match: \(|\)|\,|\=
+
+
+
+- comment: Single quotes
+  begin: \'
   end: \'
   name: string.quoted.single.sp
-  comment: Single quotes.
 
-- begin: \"
+- comment: Double quotes
+  begin: \"
   end: \"
   name: string.quoted.double.sp
-  comment: Double quotes.
 
 
-#==============================================================================
-# Keywords
 
-# General SPICE (sorted in reverse order to avoid shaddow commands)
+- comment: Devices
+  match: ^[\s]*(?i:c|d|j|k|l|m|n|o|p|q|r|s|t|u|w|y|z)[a-zA-Z0-9_@]+
+  name: support.type.sp
 
-- match: ([\.]?(?i:tran|to|tf|temp|subckt|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|include|ic|from|four|disto|dc|control|alter|ac))[^a-zA-Z0-9_]
+- comment: Sources
+  match: ^[\s]*(?i:b|e|f|g|h|i|v)[a-zA-Z0-9_@]+
+  name: entity.name.tag.sp
+
+- comment: Sub-circuits
+  match: ^[\s]*(?i:a|x)[a-zA-Z0-9_@]+
+  name: entity.sp
+
+# ISSO SERIA INTERESSANTE
+- comment: Sub-circuit NAME
+  match: ^[\s]*((?i:x)).*[\s]([a-zA-Z0-9\--_@]+$)
   captures:
-    '1': {name: keyword.operator.sp}
-  comment: SPECTRE specific commands
+    '1': {name: entity.sp}
+    '2': {name: entity.sp}
 
-- match: ^[ \t]*([\.]?(?i:endsection|ends|endl|endc|end))([^a-zA-Z0-9_]|$)
+
+# - comment: Scale factors
+#   match: ([\d]+(?i:T|G|K|mil|m|u|n|p|f))
+#   name:
+
+
+- comment: Functions
+  match: ([\s])((?i:abs|acos|asin|atan|cos|cosh|db|dc|exp|i|int|log|log10|lv|lx|max|min|pow|pulse|pwl|pwr|sgn|sign|sin|sinh|sqrt|tan|tanh|v))[\s]*[=\()]
   captures:
-    '1': {name: keyword.operator.sp}
-  comment: SPECTRE specific commands
+    '2': {name: constant.character.sp}
 
-# SPICEOPUS specific
-- match: ^[ \t]*[.]?(?i:destroy|plot)[^a-zA-Z0-9_]
-  name: keyword.control.sp
-  comment: SPICEOPUS commands.
-
-# HSPICE specific
-# - match:
-  # name: keyword.control.sp
-  # comment: HSPICE specific commands.
-
-# SPECTRE specific
-# - match:
-  # name: keyword.control.sp
-  # comment: SPECTRE specific commands.
-
-
-#==============================================================================
-# Parameters
-
-- match: ((?i:when|trig|tran|targ|find|deriv))[^a-zA-Z0-9_]
+- comment: Command Parameters
+  match: ([\s])((?i:deriv|find|targ|tran|trig|when))[\s]*[=\()]
   captures:
     '0': {name: keyword.operator.sp}
-  comment: command parameters
 
-#==============================================================================
-# Optional parameters
 
-- match: ([a-zA-Z0-9_]+)[ \t]*=
+- comment: SPICE commands
+  match: ^[\s]*([\.]?(?i:tran|to|tf|temp|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|ac))
   captures:
-    '1': {name: constant.character.sp}
-  comment: Waveform functions
+    '1': {name: keyword.operator.sp}
 
 
-#==============================================================================
-# Built-in Functions
-
-- match: ((?i:dc|pulse|pwl))[^a-zA-Z0-9_]
+- comment: SPICE commands
+  match: ^[\s]*([\.]?(?i:include))[\s]+(.*)$
   captures:
-    '1': {name: constant.character.sp}
-  comment: Waveform functions
+    '1': {name: keyword.operator.sp}
+    '2': {name: string.quoted.double.sp}
 
-- match: ((?i:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|abs|sqrt|pow|pwr|log|log10|exp|db|int|sgn|sign|min|max|lx|i))[^a-zA-Z0-9_]
+
+- comment: SPICE commands
+  match: ^[\s]*([\.]?(?i:subckt))[\s]+([a-zA-Z0-9_@\--]*)[\s]
   captures:
-    '1': {name: constant.character.sp}
-  comment: Liberty parameters.
+    '1': {name: keyword.operator.sp}
+    '2': {name: constant.character.sp}
 
-# TESTE PARA VER SE CONSIGO MELHORAR ISSO
-- match: ((lv|v|i))[\s]*(\()[\s]*([a-zA-Z0-9 ]+)[\s]*(\))
-  captures:
-    '1': {name: 'constant.character.sp'}
-    # '2': {name: 'constant.character.sp'}
-    # '4': {name: 'constant.character.sp'}
-  comment: TESTANDO.
+- comment: SPICEOPUS specific commands
+  name: keyword.control.sp
+  match: ^[\s]*([\.]?(?i:destroy))
 
-#==============================================================================
-# Devices
+# - comment: HSPICE specific commands
+  # match:
+  # name: keyword.control.sp
 
-- match: ^[ \t]*(?i:v|i|e|g|h|f)[a-zA-Z0-9_@]+
-  name: entity.name.tag.sp
-  comment: Voltage and current sources.
+# - comment: SPECTRE specific commands
+  # match:
+  # name: keyword.control.sp
 
-- match: ^[ \t]*(?i:m|r|c|l|k|s|w)[a-zA-Z0-9_@]+
-  name: support.type.sp
-  comment: Built-in devices.
 
-- match: ^[ \t]*(?i:x)[a-zA-Z0-9_@]+
-  name: entity.sp
-  comment: Sub circuits.
+
+
+
+
+
+
+
+
+
+
 
 
 #==============================================================================
