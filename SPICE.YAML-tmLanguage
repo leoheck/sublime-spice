@@ -13,13 +13,22 @@
 # EXEMPLO BOM, OLHAR
 # https://github.com/SublimeText/AAAPackageDev/blob/master/Syntax%20Definitions/Sublime%20Text%20Syntax%20Def%20(YAML).YAML-tmLanguage
 
+# http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html
+
+# OLHAR: MANUAL SPICE BACANA
+# http://cp.literature.agilent.com/litweb/pdf/ads15/spicent/snt0918.html
+
 ---
-name: SPICE
+name: SPICE_NEW
 scopeName: source.sp
 fileTypes: [sp, cdl, mdl, cir, mod, scs, spi]
 uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 
 patterns:
+
+# - comment: TITLE on the very first line
+#   name: comment.line.character.sp
+#   match:
 
 - comment: General SPICE Comments
   name: comment.line.character.sp
@@ -77,12 +86,18 @@ patterns:
   match: ^[\s]*(?i:a|x)[a-zA-Z0-9_@]+
   name: entity.sp
 
-# ISSO SERIA INTERESSANTE
-- comment: Sub-circuit NAME
-  match: ^[\s]*((?i:x)).*[\s]([a-zA-Z0-9\--_@]+$)
-  captures:
-    '1': {name: entity.sp}
-    '2': {name: entity.sp}
+
+# SERIA INTERESSANTE DESTACAR O NOME DO SUBCIRCUITO USADO
+# - comment: Sub-circuit NAME
+#   match: ^[\s]*((?i:x)).*[\s]([a-zA-Z0-9\--_@]+$)
+#   captures:
+#     '1': {name: entity.sp}
+#     '2': {name: entity.sp}
+# - comment: Sub-circuit NAME
+#   begin: ^((?i:x))[\w_\-@]+
+#   end: \s([\w]+$)
+#   captures:
+#     '0': {name: constant.character.sp}
 
 
 # - comment: Scale factors
@@ -91,7 +106,7 @@ patterns:
 
 
 - comment: Functions
-  match: ([\s])((?i:abs|acos|asin|atan|cos|cosh|db|dc|exp|i|int|log|log10|lv|lx|max|min|pow|pulse|pwl|pwr|sgn|sign|sin|sinh|sqrt|tan|tanh|v))[\s]*[=\()]
+  match: ([\s])((?i:abs|acos|asin|atan|cos|cosh|db|dc|exp|i|int|log|log10|lv|lx|max|min|pow|pulse|pwl|pwr|sgn|sign|sin|sinh|sqrt|tan|tanh|v))([=\()]|[\s])
   captures:
     '2': {name: constant.character.sp}
 
@@ -100,11 +115,6 @@ patterns:
   captures:
     '0': {name: keyword.operator.sp}
 
-
-- comment: SPICE commands
-  match: ^[\s]*([\.]?(?i:tran|to|tf|temp|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|ac))
-  captures:
-    '1': {name: keyword.operator.sp}
 
 
 - comment: SPICE commands
@@ -115,10 +125,26 @@ patterns:
 
 
 - comment: SPICE commands
-  match: ^[\s]*([\.]?(?i:subckt))[\s]+([a-zA-Z0-9_@\--]*)[\s]
+  match: ^[\s]*([\.]?(?i:subckt|ends))[\s]+([\w]+)
   captures:
     '1': {name: keyword.operator.sp}
     '2': {name: constant.character.sp}
+
+- comment: SPICE commands
+  match: ([\s])((?i:params))[\s]*(\:)
+  captures:
+    '2': {name: keyword.operator.sp}
+    '3': {name: keyword.operator.sp}
+
+- comment: SPICE commands
+  match: ^[\s]*([\.]?(?i:tran|to|tf|temp|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|dc|ac))
+  captures:
+    '1': {name: keyword.operator.sp}
+
+
+
+
+
 
 - comment: SPICEOPUS specific commands
   name: keyword.control.sp

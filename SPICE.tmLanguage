@@ -13,7 +13,7 @@
 		<string>spi</string>
 	</array>
 	<key>name</key>
-	<string>SPICE</string>
+	<string>SPICE_NEW</string>
 	<key>patterns</key>
 	<array>
 		<dict>
@@ -109,25 +109,6 @@
 		<dict>
 			<key>captures</key>
 			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.sp</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.sp</string>
-				</dict>
-			</dict>
-			<key>comment</key>
-			<string>Sub-circuit NAME</string>
-			<key>match</key>
-			<string>^[\s]*((?i:x)).*[\s]([a-zA-Z0-9\--_@]+$)</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
@@ -137,7 +118,7 @@
 			<key>comment</key>
 			<string>Functions</string>
 			<key>match</key>
-			<string>([\s])((?i:abs|acos|asin|atan|cos|cosh|db|dc|exp|i|int|log|log10|lv|lx|max|min|pow|pulse|pwl|pwr|sgn|sign|sin|sinh|sqrt|tan|tanh|v))[\s]*[=\()]</string>
+			<string>([\s])((?i:abs|acos|asin|atan|cos|cosh|db|dc|exp|i|int|log|log10|lv|lx|max|min|pow|pulse|pwl|pwr|sgn|sign|sin|sinh|sqrt|tan|tanh|v))([=\()]|[\s])</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -152,20 +133,6 @@
 			<string>Command Parameters</string>
 			<key>match</key>
 			<string>([\s])((?i:deriv|find|targ|tran|trig|when))[\s]*[=\()]</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.sp</string>
-				</dict>
-			</dict>
-			<key>comment</key>
-			<string>SPICE commands</string>
-			<key>match</key>
-			<string>^[\s]*([\.]?(?i:tran|to|tf|temp|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|ac))</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -203,7 +170,40 @@
 			<key>comment</key>
 			<string>SPICE commands</string>
 			<key>match</key>
-			<string>^[\s]*([\.]?(?i:subckt))[\s]+([a-zA-Z0-9_@\--]*)[\s]</string>
+			<string>^[\s]*([\.]?(?i:subckt|ends))[\s]+([\w]+)</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.sp</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.sp</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>SPICE commands</string>
+			<key>match</key>
+			<string>([\s])((?i:params))[\s]*(\:)</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.sp</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>SPICE commands</string>
+			<key>match</key>
+			<string>^[\s]*([\.]?(?i:tran|to|tf|temp|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|dc|ac))</string>
 		</dict>
 		<dict>
 			<key>comment</key>

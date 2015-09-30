@@ -1,37 +1,65 @@
+FIRST LINE SHOULD BE IGNORED (TREATED AS A COMMENT)
 
-v1 node+ node- sin = 10
-v1 node+ node- DC 10
-v1 node+ node- DC = 10
-v1 node+ node- DC= 10
-v1 node+ node- dc= 10
-v1 node+ node- dc= (10)
-v1 node+ node- pulse = (10)
-v1 node+ node- pwl = (10)
-   node-
+* COMENTÁRIO DE LINHA
 
-1, 2,3 ,4,4,4,4
+.include my_file.sp
+.include /path/to/my_file.sp
+
+.ic v(node) = 10uV
+.ic V(node) 10V
+.ic V(node) = 10V I(node) = 5mA
+
+.param MYPARAM = 10e-3V
+.param MYPARAM = 10mV
+.param MYPARAM = '100 * 3.3V'
+.param MYPARAM 10V
+
+.tran 10f 300ns
+.dc 10f 300ns
+.dc 10p 300ns 1p
+.DC var START = start1 STOP = stop1 STEP = incr1
+
+vname node+ node- MYPARAM
+vname node+ node- 1.2V
+vname node+ node- dc 1.2V
+vname node+ node- DC 1.2V
+vname node+ node- dc = 1.2V
+vname node+ node- dc ( 1.2V )
+vname node+ node- dc = ( 1.2V )
+vname node+ node- DC = ( 1.2V )
+
+iname node+ node- 1.2V
+
+cname node+ node- valuev
+rname node+ node- valuev
+dname node+ node- valuev
+mname source gate drain bulk nmos w=100n l=60n
+
+cname node+ node- 10fF ; inline comment
+cname node+ node- 10fF $ inline comment
+
+xname node node node node XREFERENCE
+xname node node node node xref
+xname node node node node xref w=10 l=20
+
+* Multiline statement with + sign
+xname node node node node
++ node node node node XREFERENCE
+
+* Example of simple subcircuit with ends name
+.subckt SUBCKT_NAME in out VDD GND
+xiv1 in n1  vdd gnd INV
+xiv2 n1 out vdd gnd INV
+.ends SUBCKT_NAME
+
+* Example of simple subcircuit
+.subckt SUBCKT_NAME in out vdd gnd params: cap=10fF
+xiv1 in n1  vdd gnd INV
+xiv2 n1 out vdd gnd INV
+cname n1 0 cap
+.ends
 
 
-dclala dc asaslasldc dcllalaal dc= v= valor lav
-dclala dc asaslasldc dcllalaal DC= V= valor lav
-
-.ic v(wew)=sdsd
-.ic v(wew) =
-.ic     sdsd v(wew)=
-.ic V(asas) = 12
-	ic V(asas) = 12
-	.IC V(kskdskd) = as
-
-xcut
-xdut
-xnand
-XNAND $ teste do comentario
-
-asasas
-basasas
-xasas
-caasas
-dasasas
 
 * RESISTORS
 *========================================================
@@ -50,26 +78,6 @@ RXXXXXXX N1 N2 <VALUE> <MNAME> <L=LENGTH> <W=WIDTH> <TEMP=T>
 RLOAD 2 10 10K
 RMOD 3 7 RMODEL L=10u W=1u>
 
-
-
-vname node+ node- y
-
-vlaslkas node+ node- function
-
-lalala ; inline comment
-// comment
-
-vname node+ node- function
-vname node+ node- function ; this is an inline comment
-vname node+ node- function
-vteste teste node- function
-vname node+ node- function
-vname node+ node- function
-vname node+ node- function
-
-iname iname vnaime namei namev
-vname iname vnaime namei namev  ( asas )
-
 * CAPACITORS
 *========================================================
 
@@ -83,6 +91,6 @@ COSC 17 23 10U IC=3V
 * Semiconductor Capacitors, general form:
 CXXXXXXX N1 N2 <VALUE> <MNAME> <L=LENGTH> <W=WIDTH> <IC=VAL>
 
-Examples:
+* Examples:
 CLOAD 2 10 10P
 CMOD 3 7 CMODEL L=10u W=1u
