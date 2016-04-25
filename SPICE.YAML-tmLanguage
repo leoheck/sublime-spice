@@ -98,9 +98,15 @@ patterns:
   match: ^[\s]*(?i:c|d|j|k|l|m|n|o|p|q|r|s|t|u|w|y|z)[a-zA-Z0-9_@]+
   name: support.type.sp
 
+# - comment: Sources
+#   match: ^[\s]*(?i:b|e|f|g|h|i|v)[a-zA-Z0-9_@]+
+#   name: variable.parameter
+
 - comment: Sources
-  match: ^[\s]*(?i:b|e|f|g|h|i|v)[a-zA-Z0-9_@]+
+  match: ^[\s]*(?i:b|e|f|g|h|v|i)[a-zA-Z0-9_@]+
   name: variable.parameter
+
+
 
 - comment: Sub-circuits
   match: ^[\s]*(?i:a|x)[a-zA-Z0-9_@]+
@@ -132,7 +138,7 @@ patterns:
 
 
 - comment: Functions
-  match: ([\s])((?i:abs|acos|asin|atan|cos|cosh|db|dc|exp|i|int|log|log10|lv|lx|max|min|pow|pulse|pwl|pwr|sgn|sign|sin|sinh|sqrt|tan|tanh|v))([=\()]|[\s])
+  match: ([\s])((?i:abs|acos|asin|atan|cos|cosh|db|dc|exp|int|log|log10|lv|lx|max|min|pow|pulse|pwl|pwr|sgn|sign|sin|sinh|sqrt|tan|tanh))([=\()]|[\s])
   captures:
     '2': {name: constant.character.sp}
 
