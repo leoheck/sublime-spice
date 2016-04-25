@@ -83,6 +83,36 @@
 			<string>string.quoted.double.sp</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>comment</key>
+			<string>Curl bracktes</string>
+			<key>end</key>
+			<string>\}</string>
+			<key>name</key>
+			<string>string.quoted.double.sp</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>\[</string>
+			<key>comment</key>
+			<string>Squared bracktes</string>
+			<key>end</key>
+			<string>\]</string>
+			<key>name</key>
+			<string>string.quoted.double.sp</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>comment</key>
+			<string>Parenthsis</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>name</key>
+			<string>string.quoted.double.sp</string>
+		</dict>
+		<dict>
 			<key>comment</key>
 			<string>Devices</string>
 			<key>match</key>
@@ -96,7 +126,7 @@
 			<key>match</key>
 			<string>^[\s]*(?i:b|e|f|g|h|i|v)[a-zA-Z0-9_@]+</string>
 			<key>name</key>
-			<string>entity.name.tag.sp</string>
+			<string>variable.parameter</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -104,7 +134,7 @@
 			<key>match</key>
 			<string>^[\s]*(?i:a|x)[a-zA-Z0-9_@]+</string>
 			<key>name</key>
-			<string>entity.sp</string>
+			<string>entity.name.function</string>
 		</dict>
 		<dict>
 			<key>captures</key>

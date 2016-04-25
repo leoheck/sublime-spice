@@ -73,6 +73,26 @@ patterns:
   name: string.quoted.double.sp
 
 
+# Fast workatround
+# Avoid comments on 
+
+- comment: Curl bracktes
+  begin: \{
+  end: \}
+  name: string.quoted.double.sp
+
+- comment: Squared bracktes
+  begin: \[
+  end: \]
+  name: string.quoted.double.sp
+
+- comment: Parenthsis
+  begin: \(
+  end: \)
+  name: string.quoted.double.sp
+
+
+
 
 - comment: Devices
   match: ^[\s]*(?i:c|d|j|k|l|m|n|o|p|q|r|s|t|u|w|y|z)[a-zA-Z0-9_@]+
@@ -80,11 +100,17 @@ patterns:
 
 - comment: Sources
   match: ^[\s]*(?i:b|e|f|g|h|i|v)[a-zA-Z0-9_@]+
-  name: entity.name.tag.sp
+  name: variable.parameter
 
 - comment: Sub-circuits
   match: ^[\s]*(?i:a|x)[a-zA-Z0-9_@]+
-  name: entity.sp
+  name: entity.name.function
+
+# - comment: SUBCKT instance
+#   match: ^[\s]*([\.]?(?i:include))[\s]+(.*)$
+#   captures:
+#     '1': {name: keyword.operator.sp}
+#     '2': {name: string.quoted.double.sp}
 
 
 # SERIA INTERESSANTE DESTACAR O NOME DO SUBCIRCUITO USADO
