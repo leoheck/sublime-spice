@@ -121,3 +121,27 @@ CXXXXXXX N1 N2 <VALUE> <MNAME> <L=LENGTH> <W=WIDTH> <IC=VAL>
 * Examples:
 CLOAD 2 10 10P
 CMOD 3 7 CMODEL L=10u W=1u
+
+
+vname node+ node- value
+iname node+ node- value
+
+.dc source_name start stop [step]
+.tran tstep tstop [tstart]
+
+rname node+ node- value
+cname node+ node- value
+lname node+ node- value
+mname source gate drain device
+
+exp(v1 v2 td1 tau1 td2 tau2)
+pulse(va vb [td] td tr tf pw per)
+pwl(time voltage)
+dc(value)
+sin(vo va freq td theta)
+.plot type ov1 [...] 
+.print type ov1 [...] 
+
+dc=name
+.dc=name
+
