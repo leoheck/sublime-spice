@@ -6,9 +6,9 @@
 			"details": "https://github.com/leoheck/sublime-spice",
 			"releases": [
 				{
-					"version": "0.1",
+					"version": "0.2",
 					"url": "https://github.com/leoheck/sublime-spice/tags/v0.2",
-					"date": "2014-04-14 21:11:00",
+					"date": "2015-04-14 21:11:00",
 					"sublime_text": "*"
 				}
 			]
