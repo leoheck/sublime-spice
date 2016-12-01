@@ -169,7 +169,7 @@ patterns:
     '3': {name: keyword.operator.sp}
 
 - comment: SPICE commands
-  match: ^[\s]*([\.]?(?i:tran|to|tf|temp|statistics|simulator|set|sens|section|save|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|dc|ac))
+  match: ^[\s]*([\.]?(?i:tran|load|to|tf|temp|statistics|simulator|set|sens|section|save|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|dc|ac))
   captures:
     '1': {name: keyword.operator.sp}
 
