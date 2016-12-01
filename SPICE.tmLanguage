@@ -233,7 +233,7 @@
 			<key>comment</key>
 			<string>SPICE commands</string>
 			<key>match</key>
-			<string>^[\s]*([\.]?(?i:tran|to|tf|temp|statistics|simulator|set|sens|section|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|dc|ac))</string>
+			<string>^[\s]*([\.]?(?i:tran|to|tf|temp|statistics|simulator|set|sens|section|save|process|probe|print|plot|parameters|param|option|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|dc|ac))</string>
 		</dict>
 		<dict>
 			<key>comment</key>
