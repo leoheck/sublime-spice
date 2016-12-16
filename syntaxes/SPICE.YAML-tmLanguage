@@ -1,0 +1,242 @@
+# Leandro Sehnem Heck (leoheck@gmail.com)
+
+# Use F7 to convert this .YAML-tmlanguage to sublime .tmLanguage (property list) files
+
+# Sublime text documentation:
+# http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html
+
+# Sublime text (textmate) scopes (syntax colors):
+# http://stackoverflow.com/questions/10834765/where-to-find-a-list-of-scopes-for-sublime2-or-textmate
+# http://manual.macromates.com/en/language_grammars
+
+
+# EXEMPLO BOM, OLHAR
+# https://github.com/SublimeText/AAAPackageDev/blob/master/Syntax%20Definitions/Sublime%20Text%20Syntax%20Def%20(YAML).YAML-tmLanguage
+
+# http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html
+
+# OLHAR: MANUAL SPICE BACANA
+# http://cp.literature.agilent.com/litweb/pdf/ads15/spicent/snt0918.html
+
+---
+name: SPICE
+scopeName: source.sp
+fileTypes: [sp, cdl, mdl, cir, mod, scs, spi]
+uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
+
+patterns:
+
+# - comment: TITLE on the very first line
+#   name: comment.line.character.sp
+#   match:
+
+- comment: General SPICE Comments
+  name: comment.line.character.sp
+  match: ^[ \t]*\*.*
+
+- comment: SPECTRE|HSPICE comments
+  name: comment.line.character.sp
+  match: ^[ \t]*//.*
+
+- comment: PSPICE|NGSPIE inline comment
+  name: comment.line.character.sp
+  begin: \;
+  end: $
+
+- comment: NGSPICE inline comment
+  name: comment.line.character.sp
+  begin: \$
+  end: $
+
+- comment: SPECTRE inline comment
+  name: comment.line.character.sp
+  begin: \*
+  end: $
+
+
+
+
+# - comment: Charactes that are treated like spaces
+#   name: comment.line.character.sp
+#   match: \(|\)|\,|\=
+
+
+
+- comment: Single quotes
+  begin: \'
+  end: \'
+  name: string.quoted.single.sp
+
+- comment: Double quotes
+  begin: \"
+  end: \"
+  name: string.quoted.double.sp
+
+
+# Fast workatround
+# Avoid comments on
+
+- comment: Curl bracktes
+  begin: \{
+  end: \}
+  name: string.quoted.double.sp
+
+- comment: Squared bracktes
+  begin: \[
+  end: \]
+  name: string.quoted.double.sp
+
+- comment: Parenthsis
+  begin: \(
+  end: \)
+  name: string.quoted.double.sp
+
+
+
+
+- comment: Devices
+  match: ^[\s]*(?i:c|d|j|k|l|m|n|o|p|q|r|s|t|u|w|y|z)[a-zA-Z0-9_@]+
+  name: support.type.sp
+
+# - comment: Sources
+#   match: ^[\s]*(?i:b|e|f|g|h|i|v)[a-zA-Z0-9_@]+
+#   name: variable.parameter
+
+- comment: Sources
+  match: ^[\s]*(?i:b|e|f|g|h|v|i)[a-zA-Z0-9_@]+
+  name: variable.parameter
+
+
+
+- comment: Sub-circuits
+  match: ^[\s]*(?i:a|x)[a-zA-Z0-9_@]+
+  name: entity.name.function
+
+# - comment: SUBCKT instance
+#   match: ^[\s]*([\.]?(?i:include))[\s]+(.*)$
+#   captures:
+#     '1': {name: keyword.operator.sp}
+#     '2': {name: string.quoted.double.sp}
+
+
+# SERIA INTERESSANTE DESTACAR O NOME DO SUBCIRCUITO USADO
+# - comment: Sub-circuit NAME
+#   match: ^[\s]*((?i:x)).*[\s]([a-zA-Z0-9\--_@]+$)
+#   captures:
+#     '1': {name: entity.sp}
+#     '2': {name: entity.sp}
+# - comment: Sub-circuit NAME
+#   begin: ^((?i:x))[\w_\-@]+
+#   end: \s([\w]+$)
+#   captures:
+#     '0': {name: constant.character.sp}
+
+
+# - comment: Scale factors
+#   match: ([\d]+(?i:T|G|K|mil|m|u|n|p|f))
+#   name:
+
+
+- comment: Functions
+  match: ([\s])((?i:abs|acos|asin|atan|cos|cosh|db|dc|exp|int|log|log10|lv|lx|max|min|pow|pulse|pwl|pwr|sgn|sign|sin|sinh|sqrt|tan|tanh))([=\()]|[\s])
+  captures:
+    '2': {name: constant.character.sp}
+
+- comment: Command Parameters
+  match: ([\s])((?i:deriv|find|targ|tran|trig|when))[\s]*[=\()]
+  captures:
+    '0': {name: keyword.operator.sp}
+
+
+
+- comment: SPICE commands
+  match: ^[\s]*([\.]?(?i:include))[\s]+(.*)$
+  captures:
+    '1': {name: keyword.operator.sp}
+    '2': {name: string.quoted.double.sp}
+
+
+- comment: SPICE commands
+  match: ^[\s]*([\.]?(?i:subckt|ends))[\s]+([\w]+)
+  captures:
+    '1': {name: keyword.operator.sp}
+    '2': {name: constant.character.sp}
+
+- comment: SPICE commands
+  match: ([\s])((?i:params))[\s]*(\:)
+  captures:
+    '2': {name: keyword.operator.sp}
+    '3': {name: keyword.operator.sp}
+
+- comment: SPICE commands
+  match: ^[\s]*([\.]?(?i:tran|load|to|tf|temp|statistics|simulator|set|sens|section|save|process|probe|print|plot|parameters|param|option|global|op|noise|model|measure|meas|lib|let|ic|from|four|endsection|ends|endl|endc|end|disto|control|alter|dc|ac))
+  captures:
+    '1': {name: keyword.operator.sp}
+
+
+
+
+
+
+- comment: SPICEOPUS specific commands
+  name: keyword.control.sp
+  match: ^[\s]*([\.]?(?i:destroy))
+
+# - comment: HSPICE specific commands
+  # match:
+  # name: keyword.control.sp
+
+# - comment: SPECTRE specific commands
+  # match:
+  # name: keyword.control.sp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#==============================================================================
+# Break lines
+
+- match: ^[ \t]*\+
+  name: string.quoted.single.sp
+  comment: Break line symbol at begin of line
+
+# I don't know if SPICE handle this constructs
+- match: \+[ \t]$
+  name: string.quoted.single.sp
+  comment: At end of line
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
