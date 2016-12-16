@@ -54,16 +54,6 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\*</string>
-			<key>comment</key>
-			<string>SPECTRE inline comment</string>
-			<key>end</key>
-			<string>$</string>
-			<key>name</key>
-			<string>comment.line.character.sp</string>
-		</dict>
-		<dict>
-			<key>begin</key>
 			<string>\'</string>
 			<key>comment</key>
 			<string>Single quotes</string>
@@ -79,36 +69,6 @@
 			<string>Double quotes</string>
 			<key>end</key>
 			<string>\"</string>
-			<key>name</key>
-			<string>string.quoted.double.sp</string>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>\{</string>
-			<key>comment</key>
-			<string>Curl bracktes</string>
-			<key>end</key>
-			<string>\}</string>
-			<key>name</key>
-			<string>string.quoted.double.sp</string>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>\[</string>
-			<key>comment</key>
-			<string>Squared bracktes</string>
-			<key>end</key>
-			<string>\]</string>
-			<key>name</key>
-			<string>string.quoted.double.sp</string>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>\(</string>
-			<key>comment</key>
-			<string>Parenthsis</string>
-			<key>end</key>
-			<string>\)</string>
 			<key>name</key>
 			<string>string.quoted.double.sp</string>
 		</dict>

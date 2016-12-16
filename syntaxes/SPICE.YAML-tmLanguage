@@ -27,8 +27,8 @@ uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 patterns:
 
 # - comment: TITLE on the very first line
-#   name: comment.line.character.sp
-#   match:
+  # name: comment.line.character.sp
+  # match:
 
 - comment: General SPICE Comments
   name: comment.line.character.sp
@@ -48,10 +48,11 @@ patterns:
   begin: \$
   end: $
 
-- comment: SPECTRE inline comment
-  name: comment.line.character.sp
-  begin: \*
-  end: $
+# ESSE COMENTARIO NO MEIO DA LINHA NAO PARECE ESTAR CERTO
+# - comment: SPECTRE inline comment
+  # name: comment.line.character.sp
+  # begin: \*
+  # end: $
 
 
 
@@ -76,20 +77,20 @@ patterns:
 # Fast workatround
 # Avoid comments on
 
-- comment: Curl bracktes
-  begin: \{
-  end: \}
-  name: string.quoted.double.sp
+# - comment: Curl bracktes
+  # begin: \{
+  # end: \}
+  # name: string.quoted.double.sp
 
-- comment: Squared bracktes
-  begin: \[
-  end: \]
-  name: string.quoted.double.sp
+# - comment: Squared bracktes
+  # begin: \[
+  # end: \]
+  # name: string.quoted.double.sp
 
-- comment: Parenthsis
-  begin: \(
-  end: \)
-  name: string.quoted.double.sp
+# - comment: Parenthsis
+  # begin: \(
+  # end: \)
+  # name: string.quoted.double.sp
 
 
 
