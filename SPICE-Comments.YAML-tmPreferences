@@ -1,7 +1,0 @@
-
-name: Spice Comments
-scope: source.sp
-settings:
-  shellVariables:
-  - {name: TM_COMMENT_START, value: '* '}
-uuid: 38DBCCE5-2005-410C-B7D7-013097751AC8
