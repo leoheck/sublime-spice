@@ -11,6 +11,7 @@ Install it using Package Control [SPICE](https://sublime.wbond.net/packages/Spic
 
 #### Screenshot 
 > Using syntax color theme [Monokai Extended](https://github.com/jonschlinkert/sublime-monokai-extended)
+
 ![Sample screenshot](https://github.com/leoheck/sublime-spice/blob/master/misc/sample.png?raw=true "Optional Title")
 
 
