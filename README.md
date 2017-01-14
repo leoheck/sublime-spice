@@ -20,4 +20,5 @@ Install it using Package Control [SPICE](https://sublime.wbond.net/packages/Spic
  - [Open Liberty](https://github.com/mtmoreira/sublime-liberty) (.lib)
  - [Synopsys Constraints](https://github.com/leoheck/sublime-synopsys-constraints) (.sdc)
  - [Library Exchange Format](https://sublime.wbond.net/package) (.lef)
- - [Cadence Skill](https://github.com/noisyass2/SublimeCadenceSkill)
+ - [Cadence Skill](https://github.com/noisyass2/SublimeCadenceSkill) (.skill)
+ - [3D Tool](https://github.com/leoheck/sublime-3d-tool) (.unc, .nounc)
