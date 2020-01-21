@@ -21,7 +21,7 @@
 ---
 name: SPICE
 scopeName: source.sp
-fileTypes: [sp, cdl, mdl, cir, mod, scs, spi]
+fileTypes: [sp, cdl, mdl, cir, mod, scs, spi, lib]
 uuid: b46f7485-a428-48e8-a1f8-05e3afb64e0a
 
 patterns:
@@ -114,7 +114,7 @@ patterns:
   name: entity.name.function
 
 # - comment: SUBCKT instance
-#   match: ^[\s]*([\.]?(?i:include))[\s]+(.*)$
+#   match: ^[\s]*([\.]?(?i:title))[\s]+(.*)$
 #   captures:
 #     '1': {name: keyword.operator.sp}
 #     '2': {name: string.quoted.double.sp}
@@ -151,7 +151,7 @@ patterns:
 
 
 - comment: SPICE commands
-  match: ^[\s]*([\.]?(?i:include))[\s]+(.*)$
+  match: ^[\s]*([\.]?(?i:title|include))[\s]+(.*)$
   captures:
     '1': {name: keyword.operator.sp}
     '2': {name: string.quoted.double.sp}
